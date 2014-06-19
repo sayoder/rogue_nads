@@ -49,9 +49,14 @@ build-type:          Simple
 cabal-version:       >=1.10
 
 
+Data-Files: data/default.bmp
+
 executable rogue_nads
   -- .hs or .lhs file containing the Main module.
   main-is: src/Main.hs
+  hs-source-dirs: ., src/, src/IO
+
+  other-modules: IO.VideoInit, IO.Color
 
   -- Modules included in this executable, other than Main.
   -- other-modules:
@@ -60,7 +65,8 @@ executable rogue_nads
   -- other-extensions:
 
   -- Other library packages from which modules are imported.
-  build-depends:       base >=4.7 && <4.8
+  build-depends:       base >=4.7 && <4.8,
+                       SDL
 
   ghc-options:        -outputdir ./ghc_clutter
 

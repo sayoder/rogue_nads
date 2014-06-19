@@ -3,6 +3,8 @@ module Main where
 import qualified System.Environment as SysEnv
 import qualified System.Exit as SysExit
 
+import qualified IO.VideoInit as VideoInit (init)
+
 exit :: IO a
 exit = SysExit.exitWith (SysExit.ExitSuccess)
 
@@ -13,7 +15,7 @@ versionStr :: IO ()
 versionStr = putStrLn "rogue_nads v.0.0.1"
 
 runProgram :: IO ()
-runProgram = putStrLn "Ideally this program will do something eventually."
+runProgram = VideoInit.init
 
 --Convert lists of arguments like this: ["-abc","-d","-ef"] into this:
 ----["-a","-b","-c","-d","-e","-f"]
