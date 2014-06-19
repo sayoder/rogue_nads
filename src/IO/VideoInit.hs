@@ -2,7 +2,7 @@ module IO.VideoInit where
 
 --Standard libraries
 import qualified Control.Monad as Monad
-import System.Exit (exitWith, ExitCode(..))
+import System.Exit (exitSuccess)
 
 --External libraries
 import qualified Graphics.UI.SDL as SDL
@@ -40,8 +40,8 @@ display image = do screen <- SDL.getVideoSurface
 loop :: IO () -> IO ()
 loop display = do event <- SDL.waitEvent
                   case event of
-                       SDL.Quit -> exitWith ExitSuccess
-                       SDL.KeyDown (SDL.Keysym _ _ 'q') -> exitWith ExitSuccess
+                       SDL.Quit -> exitSuccess
+                       SDL.KeyDown (SDL.Keysym _ _ 'q') -> exitSuccess
                        SDL.KeyDown (SDL.Keysym _ _ ' ') -> display
                        _  -> return ()
                   loop display
