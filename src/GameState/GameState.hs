@@ -1,4 +1,4 @@
-module RogueState.RogueState where
+module GameState.GameState where
 import Character.Player
 
 data State = State {
