@@ -56,8 +56,6 @@ executable rogue_nads
   main-is: src/Main.hs
   hs-source-dirs: ., src/, src/IO
 
-  other-modules: IO.VideoInit, IO.Color
-
   -- Modules included in this executable, other than Main.
   -- other-modules:
 
