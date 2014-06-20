@@ -77,9 +77,9 @@ movePlayer Up st = movePlayer' st (0,-1)
 
 movePlayer' :: RS.State -> Point -> IO ()
 movePlayer' st tuple = do let newst = mvmtStateChange st tuple
-                          putStrLn $ show (A.getX $ RS.player st, A.getY $ RS.player st)
+                          print (A.getX $ RS.player st, A.getY $ RS.player st)
                           waitForKeyPress newst
 
 mvmtStateChange :: RS.State -> Point -> RS.State
 mvmtStateChange st dir = st { RS.player = mpHelper dir (RS.player st) }
-        where mpHelper (x,y) p = p { P.loc = ((A.getX p) + x, (A.getY p) + y) }
+        where mpHelper (x,y) p = p { P.loc = (A.getX p + x, A.getY p + y) }

@@ -8,5 +8,5 @@ data Player = Player {
 
 instance Actor Player where
     getLocation = loc
-    getX = (fst . loc)
-    getY = (snd . loc)
+    getX = fst . loc
+    getY = snd . loc

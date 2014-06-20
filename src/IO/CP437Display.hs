@@ -16,4 +16,4 @@ coordsToRect (x,y) = Just $ SDL.Rect tlx tly 8 12
           brx = (x + 1) * 8
           bry = (y + 1) * 12
 
-smiley = coordsToRect $ (1,0)
+smiley = coordsToRect (1,0)
