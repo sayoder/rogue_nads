@@ -17,6 +17,6 @@ init = SDL.withInit [SDL.InitVideo] videoSetup
 videoSetup = do screen <- SDL.setVideoMode width height 24 [SDL.SWSurface]
                 SDL.setCaption "Test" ""
                 SDL.enableUnicode True
-                Render.display Render.image
+                Render.display Render.image (0,0)
                 KeyInput.waitForKeyPress KeyInput.initialState
 

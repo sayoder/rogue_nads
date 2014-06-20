@@ -20,6 +20,7 @@ initialState = GS.State $ P.Player (40,40)
 
 waitForKeyPress :: GS.State -> IO ()
 waitForKeyPress st = do
+       refresh st
        event <- SDL.waitEvent
        case event of
             SDL.Quit -> exitSuccess
@@ -28,10 +29,14 @@ waitForKeyPress st = do
             SDL.KeyDown (SDL.Keysym SDL.SDLK_UP    _  _ ) -> movePlayer Up st
             SDL.KeyDown (SDL.Keysym SDL.SDLK_LEFT  _  _ ) -> movePlayer Left st
             SDL.KeyDown (SDL.Keysym SDL.SDLK_RIGHT _  _ ) -> movePlayer Right st
-            SDL.KeyDown (SDL.Keysym _              _ ' ') -> Render.display Render.image
             _  -> return ()
        waitForKeyPress st
 
+refresh :: GS.State -> IO ()
+refresh st = Render.display Render.image $ playerCoords st
+
+playerCoords :: GS.State -> Point
+playerCoords st = A.getLocation $ GS.player st
 
 movePlayer :: Direction -> GS.State -> IO ()
 movePlayer Down st = movePlayer' st (0,1)
