@@ -9,11 +9,14 @@ import qualified IO.CP437Display as CP437
 import qualified IO.KeyInput as KeyInput
 import qualified IO.Render as Render
 
+--Eventually these should probably not be hard-coded.
 width = 800
 height = 600
 
+--SDL initialization boilerplate
 init = SDL.withInit [SDL.InitVideo] videoSetup
 
+--SDL initialization boilerplate
 videoSetup = do screen <- SDL.setVideoMode width height 24 [SDL.SWSurface]
                 SDL.setCaption "Test" ""
                 SDL.enableUnicode True

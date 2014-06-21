@@ -13,5 +13,6 @@ green = Color 0    0xFF 0
 blue  = Color 0    0    0xFF
 black = Color 0    0    0
 
+--Given an SDL PixelFormat, will transform a color into an (IO Pixel).
 toPixel :: Color -> IO SDL.PixelFormat -> IO SDL.Pixel
 toPixel (Color r g b) format = format >>= (\f -> SDL.mapRGB f r g b)

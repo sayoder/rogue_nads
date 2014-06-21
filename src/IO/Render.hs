@@ -18,10 +18,16 @@ imgPath = do let str = "data/default.bmp"
 image :: IO SDL.Surface
 image = imgPath >>= SDL.loadBMP
 
+--Given a point representing a location in tile coordinates, will return an
+--SDL.Rect representing the area to blit onto. We have a set tile size (8 x 12
+--pixels, for now), so all we need is tile coordinates to figure this out.
 destRect :: Point -> SDL.Rect
 destRect p = SDL.Rect (fst p * fst tileSize) (snd p * snd tileSize) (fst tileSize) (snd tileSize)
 
-display :: IO SDL.Surface -> (Int, Int) ->  IO ()
+--Given a Surface and tile coordinates, will display the surface at the given
+--tile coordinates. Eventually, this will just be given the relevant portion of
+--the game state dictionary, and it will blit all of the tiles in an area.
+display :: IO SDL.Surface -> Point ->  IO ()
 display image coords = do
     screen <- SDL.getVideoSurface
     let format = SDL.surfaceGetPixelFormat screen
